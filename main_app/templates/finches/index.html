@@ -16,14 +16,10 @@
     <div class="card">
       <div class="card-content">
         <div class="card-img-container">
-          <img 
-            src="{% static 'images/sk8r-boi-cat.svg' %}" 
-            alt="A skater boy cat"
-          >
         </div>
         <h2 class="card-title">{{ finch.name }}</h2>
         {% if finch.age > 0 %}
-          <p>A {{ finch.age }} year old {{ finch.breed }}</p>
+          <p>A {{ finch.age }} year old {{ finch.variety }}</p>
         {% else %}
           <p>A {{ finch.breed }} baby bird.</p>
         {% endif %}
