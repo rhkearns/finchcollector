@@ -26,5 +26,25 @@
     </div>
   </div>
 </section>
+<div class="sightings-house-container">
+  <section class="sightings">
+    <div class="subsection-title">
+      <h2>Sightings</h2>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Location</th></tr>
+      </thead>
+      <tbody>
+        {% for sighting in finch.sighting_set.all %}
+          <tr>
+            <td>{{ sighting.date }}</td>
+            <td>{{ sighting.location }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
 
 {% endblock %}
