@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/house-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+  
+<div class="card" style="border-color: {{ house.color }}">
+  <div class="card-bg" style="background-color: {{ house.color }}"></div>
+  <div class="card-content">
+    <h2>{{ house.name }}</h2>
+    <p>A {{ house.color }} house</p>
+  </div>
+</div>
+<a href="{% url 'houses_update' house.id %}" class="btn warn">Edit</a>
+<a href="{% url 'houses_delete' house.id %}" class="btn danger">Delete</a>
+
+{% endblock %}
