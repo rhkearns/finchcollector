@@ -3,10 +3,19 @@
 
 {% block head %}
 <link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+<link 
   rel="stylesheet" 
   type="text/css" 
   href="{% static 'css/finch-detail.css' %}"
 />
+<script defer src="{% static 'js/finch-detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -31,6 +40,19 @@
     <div class="subsection-title">
       <h2>Sightings</h2>
     </div>
+    <h3>Add a Sighting</h3>
+    <form action="{% url 'add_sighting' finch.id %}"method="post" class="subsection-content">
+      {% csrf_token %}
+      {{ sighting_form.as_p }}
+      {% if finch.seen_today %}
+        <p class="seen">{{finch.name}} has been seen today!</p>
+      {% else %}
+        <p class="unseen">{{finch.name}} has not been seen today</p>
+      {% endif %}
+      <button type="submit" class="btn submit">Add Sighting</button>
+    </form>
+    <h3>Past Sightings</h3>
+    {% if finch.sighting_set.all.count %}
     <table>
       <thead>
         <tr><th>Date</th><th>Location</th></tr>
@@ -44,6 +66,9 @@
         {% endfor %}
       </tbody>
     </table>
+    {% else %}
+      <p class="subsection-content">{{finch.name}} has never been seen</p>
+    {% endif %}
   </section>
 </div>
 
