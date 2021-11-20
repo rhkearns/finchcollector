@@ -15,10 +15,6 @@ main > section {
   flex-direction: column;
 }
 
-img {
-  width: 500px;
-}
-
 h1 {
   font-size: 5.5rem;
 }
@@ -28,7 +24,7 @@ h1 {
 }
 
 .logo-container {
-  max-width: 375px;
+  max-width: 100px;
 }
 
 .finch-container {
