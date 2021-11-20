@@ -5,27 +5,25 @@
 <link 
   rel="stylesheet" 
   type="text/css" 
-  href="{% static 'css/cat-detail.css' %}"
+  href="{% static 'css/finch-detail.css' %}"
 />
 {% endblock %}
 
 {% block content %}
 
-<section class="cat-container">
-  <div class="cat-img">
-    <img 
-      src="{% static 'images/sk8r-boi-cat.svg' %}" 
-      alt="A skater boy cat"
-    >
-  </div>
-  <div class="cat-details">
-    <h1>{{ cat.name }}</h1>
-    {% if cat.age > 0 %}
-      <h2>A {{ cat.age }} year old {{ cat.breed }}</h2>
+<section class="finch-container">
+  <div class="finch-details">
+    <h1>{{ finch.name }}</h1>
+    {% if finch.age > 0 %}
+      <h2>A {{ finch.age }} year old {{ finch.variety }}</h2>
     {% else %}
-      <h2>A {{ cat.breed }} kitten.</h2>
+      <h2>A {{ finch.variety }} bird.</h2>
     {% endif %}
-    <p>{{ cat.description }}</p>
+    <p>{{ finch.description }}</p>
+    <div class="finch-actions">
+      <a href="{% url 'finches_update' finch.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'finches_delete' finch.id %}" class="btn danger">Delete</a>
+    </div>
   </div>
 </section>
 
