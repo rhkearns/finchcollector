@@ -34,6 +34,7 @@ class Sighting(models.Model):
 class House(models.Model):
   name = models.CharField(max_length=40)
   color = models.CharField(max_length=20)
+  finches = models.ManyToManyField(Finch)
 
   def __str__(self):
     return self.name

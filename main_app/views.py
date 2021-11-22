@@ -42,7 +42,7 @@ def add_sighting(request, finch_id):
 
 class HouseCreate(CreateView):
   model = House
-  fields = '__all__'
+  fields = ['name', 'color']
 
 class HouseList(ListView):
   model = House
