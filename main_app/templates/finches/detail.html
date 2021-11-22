@@ -55,13 +55,13 @@
     {% if finch.sighting_set.all.count %}
     <table>
       <thead>
-        <tr><th>Date</th><th>Location</th></tr>
+        <tr><th>Date</th><th>Lofinchion</th></tr>
       </thead>
       <tbody>
         {% for sighting in finch.sighting_set.all %}
           <tr>
             <td>{{ sighting.date }}</td>
-            <td>{{ sighting.location }}</td>
+            <td>{{ sighting.lofinchion }}</td>
           </tr>
         {% endfor %}
       </tbody>
@@ -70,6 +70,34 @@
       <p class="subsection-content">{{finch.name}} has never been seen</p>
     {% endif %}
   </section>
+  <section class="houses">
+    <div class="subsection-title">
+      <h2>houses</h2>
+    </div>
+    <h3>{{ finch.name }}'s houses</h3>
+    <div class="subsection-content">
+      {% if finch.houses.count %}
+        {% for house in finch.houses.all %}
+          <div class="house-container">
+            <div 
+              class="color-block"
+              style="background-color: {{ house.color }}"
+            ></div>
+            <a href="{% url 'houses_detail' house.id %}">
+              <p>A {{ house.color }} {{ house.name }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-houses">{{finch.name}} doesn't have any houses 😞</p>
+      {% endif %}
+    </div>
+    <h3>Available houses</h3>
+    <div class="subsection-content">
+      {% comment %} We'll display available houses here {% endcomment %}
+    </div>
+  </section>
+</div>
 </div>
 
 {% endblock %}
