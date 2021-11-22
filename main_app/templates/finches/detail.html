@@ -95,6 +95,27 @@
     <h3>Available houses</h3>
     <div class="subsection-content">
       {% comment %} We'll display available houses here {% endcomment %}
+      {% if houses.count %}
+        {% for house in houses.all %}
+          <div class="house-container">
+            <div 
+              class="color-block"
+              style="background-color: {{ house.color }}"
+            ></div>
+            <a href="{% url 'houses_detail' house.id %}">
+              <p>A {{ house.color }} {{ house.name }}</p>
+            </a>
+            <form action="" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn submit">Give house</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="all-houses">
+          {{finch.name}} already has all the available houses 🥳
+        </p>
+      {% endif %}
     </div>
   </section>
 </div>

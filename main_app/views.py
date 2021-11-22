@@ -17,8 +17,9 @@ def finches_index(request):
 
 def finches_detail(request, finch_id):
   finch = Finch.objects.get(id=finch_id)
+  houses_finch_doesnt_have = House.objects.exclude(id__in = finch.houses.all().values_list('id'))
   sighting_form = SightingForm()
-  return render(request, 'finches/detail.html', { 'finch': finch, 'sighting_form' : sighting_form })
+  return render(request, 'finches/detail.html', { 'finch': finch, 'sighting_form' : sighting_form, 'houses': houses_finch_doesnt_have })
 
 class FinchCreate(CreateView):
   model = Finch
