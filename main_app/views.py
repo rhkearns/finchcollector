@@ -58,3 +58,7 @@ class HouseUpdate(UpdateView):
 class HouseDelete(DeleteView):
   model = House
   success_url = '/houses/'
+
+def assoc_house(request, finch_id, house_id):
+  Finch.objects.get(id=finch_id).houses.add(house_id)
+  return redirect('finches_detail', finch_id=finch_id)

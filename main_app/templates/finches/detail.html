@@ -105,9 +105,9 @@
             <a href="{% url 'houses_detail' house.id %}">
               <p>A {{ house.color }} {{ house.name }}</p>
             </a>
-            <form action="" method="post">
+            <form action="{% url 'assoc_house' finch.id house.id %}" method="post">
               {% csrf_token %}
-              <button type="submit" class="btn submit">Give house</button>
+              <button type="submit" class="btn submit">Add house</button>
             </form>
           </div>
         {% endfor %}
