@@ -3,11 +3,25 @@ from django.urls import reverse
 from datetime import date
 
 # Create your models here.
+
+class House(models.Model):
+  name = models.CharField(max_length=40)
+  color = models.CharField(max_length=20)
+
+  def __str__(self):
+    return self.name
+  
+  def get_absolute_url(self):
+      return reverse("houses_detail", kwargs={"pk": self.pk})
+  
+
 class Finch(models.Model):
   name = models.CharField(max_length=100)
   variety = models.CharField(max_length=100)
   description = models.TextField(max_length=250)
   age = models.IntegerField()
+  houses = models.ManyToManyField(House)
+
 
   def __str__(self):
     return self.name
@@ -31,14 +45,3 @@ class Sighting(models.Model):
     ordering = ['-date']
 
 
-class House(models.Model):
-  name = models.CharField(max_length=40)
-  color = models.CharField(max_length=20)
-  finches = models.ManyToManyField(Finch)
-
-  def __str__(self):
-    return self.name
-  
-  def get_absolute_url(self):
-      return reverse("houses_detail", kwargs={"pk": self.pk})
-  

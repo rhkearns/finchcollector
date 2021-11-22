@@ -22,7 +22,7 @@ def finches_detail(request, finch_id):
 
 class FinchCreate(CreateView):
   model = Finch
-  fields = '__all__'
+  fields = ['name', 'variety', 'description', 'age']
 
 class FinchUpdate(UpdateView):
   model = Finch
@@ -42,7 +42,7 @@ def add_sighting(request, finch_id):
 
 class HouseCreate(CreateView):
   model = House
-  fields = ['name', 'color']
+  fields = '__all__'
 
 class HouseList(ListView):
   model = House
