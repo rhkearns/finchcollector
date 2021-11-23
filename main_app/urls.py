@@ -16,4 +16,5 @@ urlpatterns = [
   path('houses/<int:pk>/update/', views.HouseUpdate.as_view(), name='houses_update'),
   path('houses/<int:pk>/delete/', views.HouseDelete.as_view(), name='houses_delete'),
   path('finches/<int:finch_id>/assoc_house/<int:house_id>/', views.assoc_house, name='assoc_house'),
+  path('accounts/signup/', views.signup, name="signup"),
 ]
