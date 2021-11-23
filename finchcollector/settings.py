@@ -125,5 +125,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN = 'home'
 LOGIN_REDIRECT_URL = 'finches_index'
 LOGOUT_REDIRECT_URL = 'home'
