@@ -32,6 +32,10 @@ class FinchCreate(LoginRequiredMixin, CreateView):
   model = Finch
   fields = ['name', 'variety', 'description', 'age']
 
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
 class FinchUpdate(LoginRequiredMixin, UpdateView):
   model = Finch
   fields = ['variety', 'description', 'age']
